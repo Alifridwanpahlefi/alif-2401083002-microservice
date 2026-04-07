@@ -5,16 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.alif.pelanggan.model.Pelanggan;
-import com.alif.pelanggan.repository.PelangganRepository;
+import com.rachel.pelanggan.model.Pelanggan;
+import com.rachel.pelanggan.repository.PelangganRepository;
 
 @Service
 public class PelangganService {
-
     @Autowired
     private PelangganRepository pelangganRepository;
 
-    public List<Pelanggan> getAllPelanggans() {
+    public List<Pelanggan> getAllPelanggan() {
         return pelangganRepository.findAll();
     }
 
@@ -29,4 +28,5 @@ public class PelangganService {
     public void deletePelanggan(Long id) {
         pelangganRepository.deleteById(id);
     }
+
 }
