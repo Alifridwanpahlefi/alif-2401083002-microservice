@@ -1,31 +1,25 @@
 package com.alif.produk.service;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.alif.produk.model.Produk;
 import com.alif.produk.repository.ProdukRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ProdukService {
-  @Autowired
-  private ProdukRepository produkRepository;
 
-  public List<Produk> getAllProduks() {
-    return produkRepository.findAll();
-  }
+    private final ProdukRepository repository;
 
-  public Produk getProdukById(Long Id) {
-    return produkRepository.findById(Id).orElse(null);
-  }
+    public ProdukService(ProdukRepository repository) {
+        this.repository = repository;
+    }
 
-  public Produk createProduk(Produk produk) {
-    return produkRepository.save(produk);
-  }
+    public List<Produk> getAll() {
+        return repository.findAll();
+    }
 
-  public void deleteProduk(Long id) {
-    produkRepository.deleteById(id);
-  }
+    public Produk save(Produk produk) {
+        return repository.save(produk);
+    }
 }

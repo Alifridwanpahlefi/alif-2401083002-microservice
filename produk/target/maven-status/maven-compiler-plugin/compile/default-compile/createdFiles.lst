@@ -1,0 +1,5 @@
+com\alif\produk\controller\ProdukController.class
+com\alif\produk\model\Produk.class
+com\alif\produk\repository\ProdukRepository.class
+com\alif\produk\service\ProdukService.class
+com\alif\produk\ProdukApplication.class

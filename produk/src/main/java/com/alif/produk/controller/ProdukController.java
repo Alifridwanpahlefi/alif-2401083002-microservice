@@ -18,7 +18,6 @@ import com.alif.produk.service.ProdukService;
 @RestController
 @RequestMapping("/api/produk")
 public class ProdukController {
-
     @Autowired
     private ProdukService produkService;
 
@@ -29,7 +28,7 @@ public class ProdukController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Produk> getProdukById(@PathVariable Long id) {
-        Produk produk = produkService.getProdukById(id);
+        Produk produk = produkService.getProdukbyId(id);
         return produk != null ? ResponseEntity.ok(produk) : ResponseEntity.notFound().build();
     }
 
@@ -38,9 +37,9 @@ public class ProdukController {
         return produkService.createProduk(produk);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteProduk(@PathVariable Long id) {
+    @DeleteMapping
+    public ResponseEntity<?> deleteProduk(@PathVariable Long id) {
         produkService.deleteProduk(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
 }
