@@ -2,18 +2,22 @@ package com.alif.produk.controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.alif.produk.model.Produk;
 import com.alif.produk.service.ProdukService;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
+
+
+
 
 @RestController
 @RequestMapping("/api/produk")
@@ -22,22 +26,22 @@ public class ProdukController {
     private ProdukService produkService;
 
     @GetMapping
-    public List<Produk> getAllProduk() {
+    public List<Produk> getAllProduks() {
         return produkService.getAllProduks();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Produk> getProdukById(@PathVariable Long id) {
-        Produk produk = produkService.getProdukbyId(id);
+        Produk produk = produkService.getProdukById(id);
         return produk != null ? ResponseEntity.ok(produk) : ResponseEntity.notFound().build();
     }
 
     @PostMapping
-    public Produk createProduk(@RequestBody Produk produk) {
+    public Produk creatProduk(@RequestBody Produk produk) {
         return produkService.createProduk(produk);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteProduk(@PathVariable Long id) {
         produkService.deleteProduk(id);
         return ResponseEntity.ok().build();

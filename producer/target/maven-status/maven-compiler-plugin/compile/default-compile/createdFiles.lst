@@ -1,1 +1,4 @@
+com\alif\producer\RabbitMQConfig.class
+com\alif\producer\ProducerService.class
 com\alif\producer\ProducerApplication.class
+com\alif\producer\ProducerController.class
