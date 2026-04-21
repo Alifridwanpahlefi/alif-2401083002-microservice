@@ -4,40 +4,42 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import lombok.Data;
 
-@Entity
-@Table(name = "orders") // 🔥 FIX DISINI
+@Data
+@Entity(name = "orders")
 public class Order {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private Long id_produk;
+    private Long produk_id;
     private Long id_pelanggan;
-    private double harga;
     private int jumlah;
+    private double harga;
     private double total;
     private String tanggal;
-
-    // ✅ TAMBAH status (karena dipakai di service)
     private String status;
+    private String createdBy;
+    private String role;
 
-    // =====================
-    // GETTER & SETTER
-    // =====================
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
 
     public Long getId() {
         return id;
     }
 
     public Long getId_produk() {
-        return id_produk;
+        return produk_id;
     }
 
-    public void setId_produk(Long id_produk) {
-        this.id_produk = id_produk;
+    public void setId_produk(Long produk_id) {
+        this.produk_id = produk_id;
     }
 
     public Long getId_pelanggan() {
@@ -92,7 +94,7 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", id_produk=" + id_produk +
+                ", produk_id=" + produk_id +
                 ", id_pelanggan=" + id_pelanggan +
                 ", harga=" + harga +
                 ", jumlah=" + jumlah +

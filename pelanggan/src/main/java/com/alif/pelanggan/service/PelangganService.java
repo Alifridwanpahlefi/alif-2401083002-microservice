@@ -5,15 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rachel.pelanggan.model.Pelanggan;
-import com.rachel.pelanggan.repository.PelangganRepository;
+import com.alif.pelanggan.model.Pelanggan;
+import com.alif.pelanggan.repository.PelangganRepository;
 
 @Service
 public class PelangganService {
     @Autowired
     private PelangganRepository pelangganRepository;
 
-    public List<Pelanggan> getAllPelanggan() {
+    public List<Pelanggan> getAllPelanggans() {
         return pelangganRepository.findAll();
     }
 
@@ -25,8 +25,7 @@ public class PelangganService {
         return pelangganRepository.save(pelanggan);
     }
 
-    public void deletePelanggan(Long id) {
+    public void deletePelanggan (Long id) {
         pelangganRepository.deleteById(id);
     }
-
 }
