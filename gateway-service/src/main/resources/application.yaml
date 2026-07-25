@@ -12,19 +12,19 @@ spring:
           - id: PRODUK
             uri: lb://PRODUK
             predicates:
-              - Path=api/produk/**
+              - Path=/api/produk/**
           - id: ORDER-SERVICE
             uri: lb://ORDER
             predicates:
-              - Path=api/order/**
+              - Path=/api/order/**
 eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      default-zone: http://localhost:8761/eureka/
+      default-zone: http://eureka-server:8761/eureka/
   instance:
-    hostname: localhost
+    hostname: gateway-service
 
 # Monitoring: Actuator & Prometheus
 management:
