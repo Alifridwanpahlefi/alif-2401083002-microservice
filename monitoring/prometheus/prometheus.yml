@@ -1,0 +1,55 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  # Auto-discovery via Eureka - scrapes all registered Spring Boot services
+  - job_name: 'eureka-microservices'
+    eureka_sd_configs:
+      - server: 'http://eureka-server:8761/eureka'
+    relabel_configs:
+      - target_label: __metrics_path__
+        replacement: /actuator/prometheus
+      - source_labels: [__meta_eureka_app_name]
+        target_label: job
+
+  # Static scrape targets as fallback
+  - job_name: 'eureka-server'
+    static_configs:
+      - targets: ['eureka-server:8761']
+    metrics_path: /actuator/prometheus
+
+  - job_name: 'authentication'
+    static_configs:
+      - targets: ['authentication:8090']
+    metrics_path: /actuator/prometheus
+
+  - job_name: 'gateway-service'
+    static_configs:
+      - targets: ['gateway-service:9000']
+    metrics_path: /actuator/prometheus
+
+  - job_name: 'produk'
+    static_configs:
+      - targets: ['produk:8081']
+    metrics_path: /actuator/prometheus
+
+  - job_name: 'pelanggan'
+    static_configs:
+      - targets: ['pelanggan:8082']
+    metrics_path: /actuator/prometheus
+
+  - job_name: 'order'
+    static_configs:
+      - targets: ['order:8083']
+    metrics_path: /actuator/prometheus
+
+  - job_name: 'producer'
+    static_configs:
+      - targets: ['producer:8085']
+    metrics_path: /actuator/prometheus
+
+  - job_name: 'consumer'
+    static_configs:
+      - targets: ['consumer:8086']
+    metrics_path: /actuator/prometheus
