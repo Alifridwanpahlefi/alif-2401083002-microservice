@@ -1,5 +1,0 @@
-com\alif\pelanggan\PelangganApplication.class
-com\alif\pelanggan\controller\PelangganController.class
-com\alif\pelanggan\model\Pelanggan.class
-com\alif\pelanggan\repository\PelangganRepository.class
-com\alif\pelanggan\service\PelangganService.class
