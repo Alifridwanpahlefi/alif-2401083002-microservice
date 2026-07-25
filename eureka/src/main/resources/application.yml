@@ -1,16 +1,30 @@
 spring:
-  application:
-    name: server_eureka
-
+    application:
+        name: eureka
 server:
-  port: 8761
-
+    port: 8761
 eureka:
-  client:
-    register-with-eureka: false
-    fetch-registry: false
-
+    client:
+        register-with-eureka: false
+        fetch-registry: false
 logging:
-  level:
-    com.netflix.eureka: OFF
-    com.netflix.discovery: OFF
+    level:
+        com.netflix.eureka: OFF
+        com.netflix.discovery: OFF
+
+# Monitoring: Actuator & Prometheus
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus,health,info,metrics
+  endpoint:
+    prometheus:
+      enabled: true
+    health:
+      enabled: true
+      show-details: always
+  metrics:
+    export:
+      prometheus:
+        enabled: true

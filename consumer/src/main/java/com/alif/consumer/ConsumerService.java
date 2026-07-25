@@ -25,8 +25,8 @@ public class ConsumerService {
             MimeMessage mimeMessage = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
 
-            helper.setFrom("alifridwan300@gmail.com");
-            helper.setTo("ervan@pnp.ac.id");
+            helper.setFrom("farhanalifazhary@gmail.com");
+            helper.setTo("alifazhary10@gmail.com");
             helper.setSubject("Order Baru Masuk");
 
             text = text.replace("Order{", "").replace("}", "");
@@ -79,8 +79,8 @@ public class ConsumerService {
                     "<br><br>" +
 
                     "<p>Salam,<br>" +
-                    "Alif Ridwan Pahlefi<br>" +
-                    "2401083002<br>" +
+                    "Farhan Hanif Azhary<br>" +
+                    "2401082018<br>" +
                     "Teknik Komputer 2B</p>" +
 
                     "<br>" +
